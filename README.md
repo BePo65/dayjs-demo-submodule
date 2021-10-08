@@ -2,30 +2,44 @@
 
 ![Build Status](https://github.com/briangershon/nodejs-minimal/workflows/Continuous%20Integration/badge.svg)
 
-Node.js starter with minimal dependencies and tools.
+Minimal package to show what happens, when package using dayjs uses different plugin configuration than program that uses this package (See [dayjs issue #1577](https://github.com/iamkun/dayjs/issues/1577#issuecomment-926149823) for thecorresponding question).
 
-Requires Node.js v13.13+ for default support of experimental ECMAScript modules (esm).
 
-* Includes a development environment with:
-  * Support for ECMAScript modules. Does not require Babel nor a bundler.
-  * Restarts node automatically when changes happen.
-  * Unit tests (via Jest) (Babel required to run Jest with esm)
-  * Lint (via ESLint with their recommended settings)
-  * Continuous Integration workflow with Github Actions
 
-## Run Local Dev Server
+## use this package in a program
 
-    npm install  # install dependencies
+> npm install @bepo65/dayjs-demo-submodule
 
-    nvm use      # optional, for nvm users
-    npm start
+and then in the test program
 
-    # see Welcome message logged in terminal window
+```
+import dayjs from 'dayjs'
+import updateLocale from "dayjs/plugin/updateLocale";
+import relativeTime from "dayjs/plugin/relativeTime";
+import { formatNow } from '@bepo65/dayjs-demo-submodule'
 
-## Run Tests
+// update locale
+dayjs.extend(relativeTime);
+dayjs.extend(updateLocale);
+dayjs.updateLocale("en", {
+  relativeTime: {
+    future: "in %s",
+    past: "%s ago",
+    s: "a few modified seconds",
+    m: "1 minute",
+    mm: "%d modified minutes",
+    h: "1 hour",
+    hh: "%d modified hours",
+    d: "1 day",
+    dd: "%d days",
+    M: "a month",
+    MM: "%d months",
+    y: "a year",
+    yy: "%d years",
+  },
+});
 
-    npm test
+console.log(`dayjs in this program gets '${dayjs(new Date()).fromNow()}' from dayjs.fromNow()`);
 
-## Run lint
-
-    npm run lint
+console.log(`dayjs in the imported package gets '${formatNow()}' from the formatNow`);
+```

@@ -1,3 +1,16 @@
-import { getMessage } from './hello.js';
+import dayjs from 'dayjs';
+import RelativeTime from 'dayjs/plugin/relativeTime';
 
-console.log(`Hello message: ${getMessage()}`);
+dayjs.extend(RelativeTime);
+
+/**
+ * Format current date as relative time from now
+ * @returns {string} current date as string formatted as relative time from now
+ */
+export function formatNow() {
+  return dayjs(new Date()).fromNow();
+}
+
+export default {
+  formatNow
+};

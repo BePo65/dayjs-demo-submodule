@@ -1,5 +1,12 @@
 module.exports = {
-  transform: {
-    '^.+\\.jsx?$': 'babel-jest'
-  },
+  transform: {},
+  roots: [
+    'src'
+  ],
+  testRegex: 'src/(.*?/)?.*?.spec.js$',
+  coverageDirectory: './coverage/',
+  collectCoverage: true,
+  collectCoverageFrom: [
+    'src/**/*'
+  ]
 };
