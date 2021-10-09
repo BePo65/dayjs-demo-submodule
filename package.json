@@ -1,6 +1,6 @@
 {
   "name": "@bepo65/dayjs-demo-submodule",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple node module with dayjs",
   "main": "src/index.js",
   "scripts": {
