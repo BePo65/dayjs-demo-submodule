@@ -16,7 +16,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bepo65/dayjsDemoSubmodule.git"
+    "url": "git@github.com:BePo65/dayjs-demo-submodule.git"
   },
   "private": false,
   "dependencies": {
